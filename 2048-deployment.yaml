@@ -15,7 +15,7 @@ spec:
     spec:
       containers:
       - name: "frontend"
-        image: public.ecr.aws/nginx/nginx:1.23
+        image: 509399624605.dkr.ecr.us-east-2.amazonaws.com/tanu-cicd:latest
         imagePullPolicy: Always
         ports:
         - name: http
