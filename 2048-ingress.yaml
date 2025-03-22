@@ -1,0 +1,26 @@
+apiVersion: networking.k8s.io/v1
+kind: Ingress
+metadata:
+  name: "2048-ingress"
+  namespace: "2048-game"
+  annotations:
+    kubernetes.io/ingress.class: alb
+    alb.ingress.kubernetes.io/scheme: internet-facing
+    alb.ingress.kubernetes.io/target-type: ip
+    alb.ingress.kubernetes.io/group.name: service-group
+    alb.ingress.kubernetes.io/listen-ports: '[{"HTTPS":443}, {"HTTP":80}]'
+    alb.ingress.kubernetes.io/certificate-arn: arn:aws:acm:us-east-2:509399624605:certificate/1b84b27a-7a28-4080-8503-afeaa5f2958f
+  labels:
+    app: "2048-ingress"
+spec:
+  rules:
+    - host: dev.tanuram.shop
+      http:
+        paths:  
+          - path: /
+            pathType: Prefix
+            backend:
+              service:
+                name: service-frontend
+                port:
+                  number: 80
