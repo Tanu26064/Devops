@@ -18,5 +18,4 @@ spec:
         image: 509399624605.dkr.ecr.us-east-2.amazonaws.com/tanu-cicd:latest
         imagePullPolicy: Always
         ports:
-        - name: http
           containerPort: 80
